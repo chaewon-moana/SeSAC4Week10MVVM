@@ -10,14 +10,39 @@ import UIKit
 class userTableViewController: UITableViewController {
     
     let viewModel = UserViewModel()
-
+    
+    @IBOutlet var removeAllButton: UIBarButtonItem!
+    @IBOutlet var fetchAllButton: UIBarButtonItem!
+    
+    @IBOutlet var addTextField: UITextField!
+    @IBOutlet var searchTextFeidl: UITextField!
+    
+    @IBOutlet var addButton: UIButton!
+    @IBOutlet var searchButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //Food(name: "pizza")
+        configureView()
         
     }
     
+    func configureView() {
+        addButton.addTarget(self, action: #selector(addButtonClicked), for: .touchUpInside)
+        
+        searchButton.addTarget(self, action: #selector(searchButtonClicked), for: .touchUpInside)
+    }
+    
+    @objc func addButtonClicked() {
+        //viewModel > list > append
+        viewModel.appendUser(name: addTextField.text)
+        tableView.reloadData()
+        
+        
+        
+    }
+    @objc func searchButtonClicked() {
+        print(#function)
+    }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfRowsInSection
     }
