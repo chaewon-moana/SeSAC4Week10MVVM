@@ -106,7 +106,7 @@ class ViewController: UIViewController {
         //3000 -> 3,000
         //텍스트필드에 사용자가 입력한 데이터를 뷰모델로 전달
         viewModel.inputText.value = numberTextField.text!
-
+        
     }
 
 
